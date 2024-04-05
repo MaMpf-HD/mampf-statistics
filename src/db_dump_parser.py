@@ -57,7 +57,7 @@ class DbDumpParser:
         table_header = None
         pattern = r"COPY public\.{} \((.*?)\)".format(table_name)
 
-        print("▶ Going through the file to search for the table header...")
+        print("▶ Going through the dump file to search for the table...")
         for i, line in enumerate(tqdm(self.lines)):
             match = re.search(pattern, line)
             if match:
