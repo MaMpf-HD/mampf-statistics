@@ -1,6 +1,7 @@
 # from this great blog post
 # https://jwalton.info/Embed-Publication-Matplotlib-Latex/
 
+
 def set_size(width=398.3386, fraction=1, subplots=(1, 1)):
     """Set figure dimensions to avoid scaling in LaTeX.
 
@@ -32,3 +33,6 @@ def set_size(width=398.3386, fraction=1, subplots=(1, 1)):
     fig_height_in = fig_width_in * golden_ratio * (subplots[0] / subplots[1])
 
     return (fig_width_in, fig_height_in)
+
+
+MAMPF_DARK_BLUE = "#223e62"

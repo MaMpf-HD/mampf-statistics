@@ -4,7 +4,7 @@ import scienceplots  # pylint: disable=unused-import
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import matplotlib.ticker as ticker
-from figure_beauty import set_size
+from figure_beauty import MAMPF_DARK_BLUE, set_size
 import db_dump_parser as p
 
 plt.style.use(["science", "ieee"])
@@ -13,9 +13,9 @@ OUT_FILE = "./out/last-sign-in-dates.pdf"
 parser = p.DbDumpParser()
 
 
-def plot_dates(dates: list[datetime]):  # pylint: disable=redefined-outer-name
+def plot_dates(dates):  # pylint: disable=redefined-outer-name
     plt.figure(figsize=set_size())
-    plt.hist(dates, bins=40, color="#223e62", ec="white", lw=0.6)
+    plt.hist(dates, bins=40, color=MAMPF_DARK_BLUE, ec="white", lw=0.6)
 
     plt.gca().figure.autofmt_xdate()
     plt.gca().xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m-%d"))
