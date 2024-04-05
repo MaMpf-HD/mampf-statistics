@@ -17,6 +17,7 @@ Run one of the following scripts to extract the desired statistics. They are sto
 ```py
 python3 src/last_sign_in.py
 python3 src/email_hosts.py
+python3 src/comments_dates.py
 ```
 
 
