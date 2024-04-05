@@ -6,3 +6,8 @@ __pycache__
 *.csv
 *.pdf
 *.sql
+
+# These folders might contain sensitive information
+# so don't include them to Git.
+/data/**
+/out/**
