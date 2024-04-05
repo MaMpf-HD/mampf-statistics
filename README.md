@@ -7,15 +7,17 @@ A few python scripts to generate some statistics about the MaMpf project given a
 
 - [x] Python 3.8 or higher (tested with Python 3.11.5)
 - [x] Install the required python packages via `pip3 install -r requirements.txt`.
-- [x] Place a database dump in the `data` folder and name it `mampf.sql`. Install the required python packages:
+- [x] Place a database dump in the `data` folder and name it `mampf.sql`.
 
 
 ## Usage
 
-Run one of these scripts to extract the desired statistics. They are stored as PDF files in the `out` folder.
+Run one of the following scripts to extract the desired statistics. They are stored as PDF files in the `out` folder.
 
 ```py
 python3 src/last_sign_in.py
+
+# more to come...
 ```
 
 
