@@ -7,7 +7,7 @@ A few python scripts to generate some statistics about the MaMpf project given a
 
 - [x] Python 3.8 or higher (tested with Python 3.11.5)
 - [x] Install the required python packages via `pip3 install -r requirements.txt`.
-- [x] Place a database dump in the `data` folder and name it `mampf.sql`.
+- [x] Place a database dump in the `data` folder and name it `mampf.sql`.<br>(This path can be modified in the `.env` file if necessary.)
 
 
 ## Usage
