@@ -1,12 +1,24 @@
 # MaMpf statistics
 
-A few python scripts to get some statistics about the MaMpf project.
+A few python scripts to generate some statistics about the MaMpf project given an uncompressed database dump.
 
-To begin, place a database dump in the `data` folder and name it `mampf.sql`. Then run
+
+## Pre-requisites
+
+- [x] Python 3.8 or higher (tested with Python 3.11.5)
+- [x] Install the required python packages via `pip3 install -r requirements.txt`.
+- [x] Place a database dump in the `data` folder and name it `mampf.sql`. Install the required python packages:
+
+
+## Usage
+
+Run one of these scripts to extract the desired statistics. They are stored as PDF files in the `out` folder.
 
 ```py
 python3 src/last_sign_in.py
 ```
 
-> [!warning]
-> At least that's what we want in the end. Right now, it's a bit more effort. You have to load a database dump into a local postgres database, export the respective columns to a CSV file and then place it in the `data/` folder. In the future, we want to instead read the database dump directly, e.g. via a python parsing library to parse the SQL dump and extract the relevant information from it.
+
+## Development
+
+- If you're using VSCode, go the the extensions tab and install the recommended extensions for this project (click on the filter icon and choose `Recommended`). This is mainly to ensure that the code is formatted correctly and that the linter (pylint) is working.

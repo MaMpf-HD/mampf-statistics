@@ -51,6 +51,8 @@
     //////////////////////////////////////
     "cSpell.words": [
         "ieee",
-        "pylint"
+        "pylint",
+        "scienceplots",
+        "tqdm"
     ]
 }

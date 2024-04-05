@@ -1,35 +1,19 @@
 from datetime import datetime
 
+import scienceplots  # pylint: disable=unused-import
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import matplotlib.ticker as ticker
-import scienceplots
 from figure_beauty import set_size
+import db_dump_parser as p
 
 plt.style.use(["science", "ieee"])
-
-CSV_FILE = "./data/last-sign-in-dates.csv"
 OUT_FILE = "./out/last-sign-in-dates.pdf"
 
-
-def get_dates_from_file():
-    all_dates = []
-    total_count = 0
-
-    with open(CSV_FILE, "r", encoding="utf-8") as data:
-        data.readline()  # skip header
-
-        for line in data:
-            total_count += 1
-            line = line.split(",")
-            date = line[1]
-            if date != "":
-                all_dates.append(date)
-
-    return all_dates, total_count
+parser = p.DbDumpParser()
 
 
-def plot_dates(dates):
+def plot_dates(dates: list[datetime]):  # pylint: disable=redefined-outer-name
     plt.figure(figsize=set_size())
     plt.hist(dates, bins=40, color="#223e62", ec="white", lw=0.6)
 
@@ -44,16 +28,21 @@ def plot_dates(dates):
     plt.ylabel("Number of users with last sign in at that date")
     plt.title("Last sign in dates")
     plt.savefig(OUT_FILE)
+    print(f'💾 Plot saved to "{OUT_FILE}"')
 
 
-dates, count = get_dates_from_file()
-print(f"Total count: {count}")
-print(f"Number of dates (that are not NULL): {len(dates)}")
-dates = [datetime.strptime(date, "%Y-%m-%d %H:%M:%S.%f") for date in dates]
+if __name__ == "__main__":
+    last_sign_ins = parser.table_column("users", "last_sign_in_at")
+    print(f"Number of dates: {len(last_sign_ins)}")
 
-oldest_date = min(dates)
-newest_date = max(dates)
-print(f"Oldest date: {oldest_date}")
-print(f"Newest date: {newest_date}")
+    # Filter out NULL values
+    last_sign_ins = [date for date in last_sign_ins if date is not None]
+    print(f"Number of dates (that are not NULL): {len(last_sign_ins)}")
 
-plot_dates(dates)
+    dates = [datetime.strptime(date, "%Y-%m-%d %H:%M:%S.%f") for date in last_sign_ins]
+    oldest_date = min(dates)
+    newest_date = max(dates)
+    print(f"Oldest date: {oldest_date}")
+    print(f"Newest date: {newest_date}")
+
+    plot_dates(dates)
